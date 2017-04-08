@@ -709,7 +709,7 @@ textarea {
 }
 
 #menu .logo-container img {
-    width: 100%;
+    width: 60%;
     max-width: 100%;
 }
 
@@ -827,6 +827,7 @@ textarea {
 
 #page-loader .loader-logo {
     margin-bottom: 80px;
+    width: 10%;
 }
 
 #page-loader .loader-footer {
