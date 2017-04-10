@@ -1241,7 +1241,7 @@ textarea {
 }
 
 .bg-pattern {
-    background-image: url('../images/bg_pattern.png');
+    /*background-image: url('../images/bg_pattern.png');*/
 }
 
 .big-icon-single {
@@ -6079,75 +6079,74 @@ textarea {
     padding: 8px 28px;
 }
 
+
 /* blockquote - Start */
-blockquote{
-  display:block;
-  padding: 10px 35px 12px 40px;
-  margin: 0 0 5px;
-  position: relative;
-  
-  /*Font*/
-  font-family: Georgia, serif;
-  font-size: 16px;
-  line-height: 1.2;
-  color: #fff;
-  text-align: justify;
-  
-  /*Borders - (Optional)*/
-  border-left: 5px solid #999;
-  border-right: 0px solid #999;
-  
-  /*Box Shadow - (Optional)*/
-  -moz-box-shadow: 2px 2px 10px #ccc;
-  -webkit-box-shadow: 2px 2px 10px #ccc;
-  box-shadow: 2px 2px 10px #ccc;
+
+blockquote {
+    display: block;
+    padding: 10px 35px 12px 40px;
+    margin: 0 0 5px;
+    position: relative;
+    /*Font*/
+    font-family: Georgia, serif;
+    font-size: 16px;
+    line-height: 1.2;
+    color: #fff;
+    text-align: justify;
+    /*Borders - (Optional)*/
+    border-left: 5px solid #999;
+    border-right: 0px solid #999;
+    /*Box Shadow - (Optional)*/
+    -moz-box-shadow: 2px 2px 10px #ccc;
+    -webkit-box-shadow: 2px 2px 10px #ccc;
+    box-shadow: 2px 2px 10px #ccc;
 }
 
-blockquote::before{
-  content: "\201C"; /*Unicode for Left Double Quote*/
-  
-  /*Font*/
-  font-family: Georgia, serif;
-  font-size: 40px;
-  font-weight: bold;
-  color: #01bab0;
-  
-  /*Positioning*/
-  position: absolute;
-  left: 10%;
-  top:5%;
+blockquote::before {
+    content: "\201C";
+    /*Unicode for Left Double Quote*/
+    /*Font*/
+    font-family: Georgia, serif;
+    font-size: 40px;
+    font-weight: bold;
+    color: #01bab0;
+    /*Positioning*/
+    position: absolute;
+    left: 10%;
+    top: 5%;
 }
 
-blockquote::after{
-  /*Reset to make sure*/
-  content: "\201D";
-  /*Font*/
-  font-family: Georgia, serif;
-  font-size: 40px;
-  font-weight: bold;
-  color: #01bab0;
-  
-  /*Positioning*/
-  position: absolute;
-  left: 72%;
-  top:50%;
+blockquote::after {
+    /*Reset to make sure*/
+    content: "\201D";
+    /*Font*/
+    font-family: Georgia, serif;
+    font-size: 40px;
+    font-weight: bold;
+    color: #01bab0;
+    /*Positioning*/
+    position: absolute;
+    left: 72%;
+    top: 50%;
 }
 
-blockquote a{
-  text-decoration: none;
-  background: #eee;
-  cursor: pointer;
-  padding: 0 3px;
-  color: #c76c0c;
+blockquote a {
+    text-decoration: none;
+    background: #eee;
+    cursor: pointer;
+    padding: 0 3px;
+    color: #c76c0c;
 }
 
-blockquote a:hover{
- color: #666;
+blockquote a:hover {
+    color: #666;
 }
 
-blockquote em{
-  font-style: italic;
+blockquote em {
+    font-style: italic;
 }
+
+
 /* blockquote - end*/
 
 
