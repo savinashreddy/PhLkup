@@ -463,7 +463,7 @@ $(window).load(function(e) {
 
 
     //portfolio layout 2 - isotope activation
-    var portfolio2 = $('#portfolio2');
+    /*var portfolio2 = $('#portfolio2');
     if (portfolio2.length == 1) {
         var isotopeEl2 = portfolio2.isotope({
             itemSelector: '.portfolio-item',
@@ -493,7 +493,7 @@ $(window).load(function(e) {
         isotope_filter2_list.find('.isotope-filter-button > a').on('click', function(e) {
             portfolio2_filter_perform();
         });
-    }
+    }*/
 
     function portfolio2_filter_perform() {
         var filter_string = '';
@@ -697,6 +697,41 @@ $('.return-msg').on('click', function(e) {
     $(this).removeClass('show-return-msg');
 });
 
+function portfolio() {
+    var portfolio2 = $('#portfolio2');
+    if (portfolio2.length == 1) {
+        /*var isotopeEl2 = portfolio2.isotope({
+            itemSelector: '.portfolio-item',
+            masonry: {
+                columnWidth: '.portfolio-item'
+            },
+            percentPosition: true
+        });*/
+
+        //isotope filter
+        var isotope_filter2_list = $('#isotope-filter-list2');
+        var isotope_filter2_items = isotope_filter2_list.find('.isotope-filter');
+        var isotope_filter2_all = isotope_filter2_list.find('[data-filter="*"]');
+        var automatic_filtering = portfolio2.hasClass('filtering-on-button') ? false : true;
+        isotope_filter2_items.on('click', function(e) {
+            e.preventDefault();
+            if ($(this).get(0) == isotope_filter2_all.get(0)) {
+                isotope_filter2_items.removeClass('active');
+                isotope_filter2_all.addClass('active');
+            } else {
+                isotope_filter2_all.removeClass('active');
+                $(this).toggleClass('active');
+            }
+            if (automatic_filtering) {
+                //portfolio2_filter_perform();
+            }
+        });
+        isotope_filter2_list.find('.isotope-filter-button > a').on('click', function(e) {
+            //portfolio2_filter_perform();
+        });
+    }
+}
+
 function getDataFromAjax() {
     $.ajax({
         url: '../src/data/photos.json',
@@ -714,14 +749,23 @@ function getDataFromAjax() {
 
 var loadHomePhotos = function(photoJsonData) {
     for (var i = 0; i < photoJsonData.item.length; i++) {
+        if (photoJsonData.item[i].id == 'wedding' && window.location.href.indexOf('Wedding') >= 0) {
+            for (var j = 0; j < photoJsonData.item[i].imgs.img.length; j++) {
+                var template = '<article class="col-xxxl-12-5 col-xxl-3 col-xl-4 col-lg-4 col-md-4 col-sm-6 col-xs-12 portfolio-item filter-people"> <div class="portfolio-item-content"><div class="portfolio-img"> <img alt="image" src="http://drive.google.com/uc?export=view&id=' + photoJsonData.item[i].imgs.img[j].id + '"> <div class="portfolio-img-detail"><div class="portfolio-img-detail-inner"> <a class="portfolio-img-detail-content" href="http://drive.google.com/uc?export=view&id=' + photoJsonData.item[i].imgs.img[j].id + '" data-lightbox="portfolio-images"></a> </div> </div> </div><div class="portfolio-item-info">  <a class="popup-window-trigger" data-popup="#popup-portfolio-' + photoJsonData.item[i].imgs.img[j].id + '"></a> </div> </div> </article>' +
+                    '<section id="popup-portfolio-' + photoJsonData.item[i].imgs.img[j].id + '" class="popup-window-container"><div class="section-content"> <div class="popup-window-closing-area"></div><div class="container"> <div class="popup-window portfolio-work-layout2"> <div class="popup-window-close popup-window-close-light popup-window-close-small"></div> <div class="portfolio-work-img"> <div class="single-slider black-arrows"> <a href="http://drive.google.com/uc?export=view&id=' + photoJsonData.item[i].imgs.img[j].id + '" data-lightbox="portfolio-item1-images"> <img alt = "image"  src = "http://drive.google.com/uc?export=view&id=' + photoJsonData.item[i].imgs.img[j].id + '" > </a> </div> </div> </div> </div> </div>     </section>';
+                $('.portfolio-wedding').append(template);
+            }
+            portfolio();
+        }
         if (photoJsonData.item[i].id == 'home') {
             for (var j = 0; j < photoJsonData.item[i].imgs.img.length; j++) {
                 var template = '<div class="ms-slide ms-slide1" data-delay="7"> <div class="ms-slide-pattern bg-pattern dark-screen"></div> <img src="../../images/blank.gif" data-src="http://drive.google.com/uc?export=view&id=' + photoJsonData.item[i].imgs.img[j].id + '" alt="img">  <div class="ms-thumb"><img alt="img" src="http://drive.google.com/uc?export=view&id=' + photoJsonData.item[i].imgs.img[j].id + '"></div> </div>';
                 $('.master-slider-home').append(template);
             }
+            loadMasterSlider();
         }
     }
-    loadMasterSlider();
+
 }
 
 /*Wedding:
