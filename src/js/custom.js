@@ -747,29 +747,92 @@ function getDataFromAjax() {
     })
 }
 
+function setUpMasonry() {
+
+    var $container = $('.container').masonry({
+        itemSelector: '.item',
+        columnWidth: 200
+    });
+
+    // reveal initial images
+    $container.masonryImagesReveal($('.portfolio-layout2').find('.item'));
+
+}
+$.fn.masonryImagesReveal = function($items) {
+    var msnry = this.data('masonry');
+    var itemSelector = msnry.options.itemSelector;
+    // hide by default
+    $items.hide();
+    // append to container
+    this.append($items);
+    $items.imagesLoaded().progress(function(imgLoad, image) {
+        // get item
+        // image is imagesLoaded class, not <img>, <img> is image.img
+        var $item = $(image.img).parents(itemSelector);
+        // un-hide item
+        $item.show();
+        // masonry does its thing
+        msnry.appended($item);
+    });
+
+    return this;
+};
+
+function setUpFancybox() {
+    $(".fancybox").fancybox({
+        /*openEffect: "none",
+        closeEffect: "none",
+        fitToView: true,
+        arrows: true,
+        closeBtn: true,
+        nextClick: true,
+        maxWidth: 500,
+        maxHeight: 400*/
+        prevEffect: 'none',
+        nextEffect: 'none',
+        helpers: {
+            title: {
+                type: 'outside'
+            },
+            thumbs: {
+                width: 50,
+                height: 50
+            }
+        }
+
+    });
+}
 var loadHomePhotos = function(photoJsonData) {
     for (var i = 0; i < photoJsonData.item.length; i++) {
         if (photoJsonData.item[i].id == 'wedding' && window.location.href.indexOf('wedding') >= 0) {
             for (var j = 0; j < photoJsonData.item[i].imgs.img.length; j++) {
-                var template = '<article class="col-xxxl-12-5 col-xxl-3 col-xl-4 col-lg-4 col-md-4 col-sm-6 col-xs-12 portfolio-item filter-people"> <div class="portfolio-item-content"><div class="portfolio-img"> <img alt="image" src="http://drive.google.com/uc?export=view&id=' + photoJsonData.item[i].imgs.img[j].id + '"> <div class="portfolio-img-detail"><div class="portfolio-img-detail-inner"> <a class="portfolio-img-detail-content" href="http://drive.google.com/uc?export=view&id=' + photoJsonData.item[i].imgs.img[j].id + '" data-lightbox="portfolio-images"></a> </div> </div> </div><div class="">  <a class="popup-window-trigger" data-popup="#popup-portfolio-' + photoJsonData.item[i].imgs.img[j].id + '"></a> </div> </div> </article>' +
-                    '<section id="popup-portfolio-' + photoJsonData.item[i].imgs.img[j].id + '" class="popup-window-container"><div class="section-content"> <div class="popup-window-closing-area"></div><div class="container"> <div class="popup-window portfolio-work-layout2"> <div class="popup-window-close popup-window-close-light popup-window-close-small"></div> <div class="portfolio-work-img"> <div class="single-slider black-arrows"> <a href="http://drive.google.com/uc?export=view&id=' + photoJsonData.item[i].imgs.img[j].id + '" data-lightbox="portfolio-item1-images"> <img alt = "image"  src = "http://drive.google.com/uc?export=view&id=' + photoJsonData.item[i].imgs.img[j].id + '" > </a> </div> </div> </div> </div> </div>     </section>';
+                /*var template = '<article class="col-xxxl-12-5 col-xxl-3 col-xl-4 col-lg-4 col-md-4 col-sm-6 col-xs-12 portfolio-item filter-people"> <div class="portfolio-item-content"><div class="portfolio-img"> <img alt="image" src="http://drive.google.com/uc?export=view&id=' + photoJsonData.item[i].imgs.img[j].id + '"> <div class="portfolio-img-detail"><div class="portfolio-img-detail-inner"> <a class="portfolio-img-detail-content" href="http://drive.google.com/uc?export=view&id=' + photoJsonData.item[i].imgs.img[j].id + '" data-lightbox="portfolio-images"></a> </div> </div> </div><div class="">  <a class="popup-window-trigger" data-popup="#popup-portfolio-' + photoJsonData.item[i].imgs.img[j].id + '"></a> </div> </div> </article>' +
+                    '<section id="popup-portfolio-' + photoJsonData.item[i].imgs.img[j].id + '" class="popup-window-container"><div class="section-content"> <div class="popup-window-closing-area"></div><div class="container"> <div class="popup-window portfolio-work-layout2"> <div class="popup-window-close popup-window-close-light popup-window-close-small"></div> <div class="portfolio-work-img"> <div class="single-slider black-arrows"> <a href="http://drive.google.com/uc?export=view&id=' + photoJsonData.item[i].imgs.img[j].id + '" data-lightbox="portfolio-item1-images"> <img alt = "image"  src = "http://drive.google.com/uc?export=view&id=' + photoJsonData.item[i].imgs.img[j].id + '" > </a> </div> </div> </div> </div> </div>     </section>';*/
+                var template = ' <div class="item"> <img src="http://drive.google.com/uc?export=view&id=' + photoJsonData.item[i].imgs.img[j].id + '"> </div>'
                 $('.portfolio-wedding').append(template);
             }
-            portfolio();
+            setUpMasonry();
+            //portfolio();
         } else if (photoJsonData.item[i].id == 'fashion' && window.location.href.indexOf('glamor') >= 0) {
             for (var j = 0; j < photoJsonData.item[i].imgs.img.length; j++) {
-                var template = '<article class="col-xxxl-12-5 col-xxl-3 col-xl-4 col-lg-4 col-md-4 col-sm-6 col-xs-12 portfolio-item filter-people"> <div class="portfolio-item-content"><div class="portfolio-img"> <img alt="image" src="http://drive.google.com/uc?export=view&id=' + photoJsonData.item[i].imgs.img[j].id + '"> <div class="portfolio-img-detail"><div class="portfolio-img-detail-inner"> <a class="portfolio-img-detail-content" href="http://drive.google.com/uc?export=view&id=' + photoJsonData.item[i].imgs.img[j].id + '" data-lightbox="portfolio-images"></a> </div> </div> </div><div class="">  <a class="popup-window-trigger" data-popup="#popup-portfolio-' + photoJsonData.item[i].imgs.img[j].id + '"></a> </div> </div> </article>' +
-                    '<section id="popup-portfolio-' + photoJsonData.item[i].imgs.img[j].id + '" class="popup-window-container"><div class="section-content"> <div class="popup-window-closing-area"></div><div class="container"> <div class="popup-window portfolio-work-layout2"> <div class="popup-window-close popup-window-close-light popup-window-close-small"></div> <div class="portfolio-work-img"> <div class="single-slider black-arrows"> <a href="http://drive.google.com/uc?export=view&id=' + photoJsonData.item[i].imgs.img[j].id + '" data-lightbox="portfolio-item1-images"> <img alt = "image"  src = "http://drive.google.com/uc?export=view&id=' + photoJsonData.item[i].imgs.img[j].id + '" > </a> </div> </div> </div> </div> </div>     </section>';
+                /*var template = '<article class="col-xxxl-12-5 col-xxl-3 col-xl-4 col-lg-4 col-md-4 col-sm-6 col-xs-12 portfolio-item filter-people"> <div class="portfolio-item-content"><div class="portfolio-img"> <img alt="image" src="http://drive.google.com/uc?export=view&id=' + photoJsonData.item[i].imgs.img[j].id + '"> <div class="portfolio-img-detail"><div class="portfolio-img-detail-inner"> <a class="portfolio-img-detail-content" href="http://drive.google.com/uc?export=view&id=' + photoJsonData.item[i].imgs.img[j].id + '" data-lightbox="portfolio-images"></a> </div> </div> </div><div class="">  <a class="popup-window-trigger" data-popup="#popup-portfolio-' + photoJsonData.item[i].imgs.img[j].id + '"></a> </div> </div> </article>' +
+                    '<section id="popup-portfolio-' + photoJsonData.item[i].imgs.img[j].id + '" class="popup-window-container"><div class="section-content"> <div class="popup-window-closing-area"></div><div class="container"> <div class="popup-window portfolio-work-layout2"> <div class="popup-window-close popup-window-close-light popup-window-close-small"></div> <div class="portfolio-work-img"> <div class="single-slider black-arrows"> <a href="http://drive.google.com/uc?export=view&id=' + photoJsonData.item[i].imgs.img[j].id + '" data-lightbox="portfolio-item1-images"> <img alt = "image"  src = "http://drive.google.com/uc?export=view&id=' + photoJsonData.item[i].imgs.img[j].id + '" > </a> </div> </div> </div> </div> </div>     </section>';*/
+                var template = ' <div class="item"> <img src="http://drive.google.com/uc?export=view&id=' + photoJsonData.item[i].imgs.img[j].id + '"> </div>'
                 $('.portfolio-glamour').append(template);
             }
-            portfolio();
+            //portfolio();
+            setUpMasonry();
         } else if (photoJsonData.item[i].id == 'landscapes' && window.location.href.indexOf('landscaps') >= 0) {
             for (var j = 0; j < photoJsonData.item[i].imgs.img.length; j++) {
-                var template = '<article class="col-xxxl-12-5 col-xxl-3 col-xl-4 col-lg-4 col-md-4 col-sm-6 col-xs-12 portfolio-item filter-people"> <div class="portfolio-item-content"><div class="portfolio-img"> <img alt="image" src="http://drive.google.com/uc?export=view&id=' + photoJsonData.item[i].imgs.img[j].id + '"> <div class="portfolio-img-detail"><div class="portfolio-img-detail-inner"> <a class="portfolio-img-detail-content" href="http://drive.google.com/uc?export=view&id=' + photoJsonData.item[i].imgs.img[j].id + '" data-lightbox="portfolio-images"></a> </div> </div> </div><div class="">  <a class="popup-window-trigger" data-popup="#popup-portfolio-' + photoJsonData.item[i].imgs.img[j].id + '"></a> </div> </div> </article>' +
-                    '<section id="popup-portfolio-' + photoJsonData.item[i].imgs.img[j].id + '" class="popup-window-container"><div class="section-content"> <div class="popup-window-closing-area"></div><div class="container"> <div class="popup-window portfolio-work-layout2"> <div class="popup-window-close popup-window-close-light popup-window-close-small"></div> <div class="portfolio-work-img"> <div class="single-slider black-arrows"> <a href="http://drive.google.com/uc?export=view&id=' + photoJsonData.item[i].imgs.img[j].id + '" data-lightbox="portfolio-item1-images"> <img alt = "image"  src = "http://drive.google.com/uc?export=view&id=' + photoJsonData.item[i].imgs.img[j].id + '" > </a> </div> </div> </div> </div> </div>     </section>';
+                /*var template = '<article class="col-xxxl-12-5 col-xxl-3 col-xl-4 col-lg-4 col-md-4 col-sm-6 col-xs-12 portfolio-item filter-people"> <div class="portfolio-item-content"><div class="portfolio-img"> <img alt="image" src="http://drive.google.com/uc?export=view&id=' + photoJsonData.item[i].imgs.img[j].id + '"> <div class="portfolio-img-detail"><div class="portfolio-img-detail-inner"> <a class="portfolio-img-detail-content" href="http://drive.google.com/uc?export=view&id=' + photoJsonData.item[i].imgs.img[j].id + '" data-lightbox="portfolio-images"></a> </div> </div> </div><div class="">  <a class="popup-window-trigger" data-popup="#popup-portfolio-' + photoJsonData.item[i].imgs.img[j].id + '"></a> </div> </div> </article>' +
+                    '<section id="popup-portfolio-' + photoJsonData.item[i].imgs.img[j].id + '" class="popup-window-container"><div class="section-content"> <div class="popup-window-closing-area"></div><div class="container"> <div class="popup-window portfolio-work-layout2"> <div class="popup-window-close popup-window-close-light popup-window-close-small"></div> <div class="portfolio-work-img"> <div class="single-slider black-arrows"> <a href="http://drive.google.com/uc?export=view&id=' + photoJsonData.item[i].imgs.img[j].id + '" data-lightbox="portfolio-item1-images"> <img alt = "image"  src = "http://drive.google.com/uc?export=view&id=' + photoJsonData.item[i].imgs.img[j].id + '" > </a> </div> </div> </div> </div> </div>     </section>';*/
+                //var template = ' <div class="item"> <img src="http://drive.google.com/uc?export=view&id=' + photoJsonData.item[i].imgs.img[j].id + '"> </div>'
+                var template = '<div class="item"> <a class="fancybox" rel="fancybox-thumb" href="http://drive.google.com/uc?export=view&id=' + photoJsonData.item[i].imgs.img[j].id + '"> <img  alt="" src="http://drive.google.com/uc?export=view&id=' + photoJsonData.item[i].imgs.img[j].id + '" />  </a> </div>'
                 $('.portfolio-nature').append(template);
             }
-            portfolio();
+            //portfolio();
+            setUpMasonry();
+            setUpFancybox();
         } else if (photoJsonData.item[i].id == 'home') {
             for (var j = 0; j < photoJsonData.item[i].imgs.img.length; j++) {
                 var template = '<div class="ms-slide ms-slide1" data-delay="7"> <div class="ms-slide-pattern bg-pattern dark-screen"></div> <img src="../../images/blank.gif" data-src="http://drive.google.com/uc?export=view&id=' + photoJsonData.item[i].imgs.img[j].id + '" alt="img">  <div class="ms-thumb"><img alt="img" src="http://drive.google.com/uc?export=view&id=' + photoJsonData.item[i].imgs.img[j].id + '"></div> </div>';

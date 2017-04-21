@@ -7438,3 +7438,13 @@ blockquote em {
         width: 20%;
     }
 }
+
+.item {
+    width: 200px;
+    float: left;
+}
+
+.item img {
+    display: block;
+    width: 100%;
+}
