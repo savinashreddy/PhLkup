@@ -779,15 +779,7 @@ $.fn.masonryImagesReveal = function($items) {
 };
 
 function setUpFancybox() {
-    $(".fancybox").fancybox({
-        /*openEffect: "none",
-        closeEffect: "none",
-        fitToView: true,
-        arrows: true,
-        closeBtn: true,
-        nextClick: true,
-        maxWidth: 500,
-        maxHeight: 400*/
+    /*$(".fancybox").fancybox({
         prevEffect: 'none',
         nextEffect: 'none',
         helpers: {
@@ -800,6 +792,19 @@ function setUpFancybox() {
             }
         }
 
+    });*/
+    $(".fancybox-thumb").fancybox({
+        prevEffect: 'none',
+        nextEffect: 'none',
+        helpers: {
+            title: {
+                type: 'outside'
+            },
+            thumbs: {
+                width: 50,
+                height: 50
+            }
+        }
     });
 }
 var loadHomePhotos = function(photoJsonData) {
@@ -827,7 +832,8 @@ var loadHomePhotos = function(photoJsonData) {
                 /*var template = '<article class="col-xxxl-12-5 col-xxl-3 col-xl-4 col-lg-4 col-md-4 col-sm-6 col-xs-12 portfolio-item filter-people"> <div class="portfolio-item-content"><div class="portfolio-img"> <img alt="image" src="http://drive.google.com/uc?export=view&id=' + photoJsonData.item[i].imgs.img[j].id + '"> <div class="portfolio-img-detail"><div class="portfolio-img-detail-inner"> <a class="portfolio-img-detail-content" href="http://drive.google.com/uc?export=view&id=' + photoJsonData.item[i].imgs.img[j].id + '" data-lightbox="portfolio-images"></a> </div> </div> </div><div class="">  <a class="popup-window-trigger" data-popup="#popup-portfolio-' + photoJsonData.item[i].imgs.img[j].id + '"></a> </div> </div> </article>' +
                     '<section id="popup-portfolio-' + photoJsonData.item[i].imgs.img[j].id + '" class="popup-window-container"><div class="section-content"> <div class="popup-window-closing-area"></div><div class="container"> <div class="popup-window portfolio-work-layout2"> <div class="popup-window-close popup-window-close-light popup-window-close-small"></div> <div class="portfolio-work-img"> <div class="single-slider black-arrows"> <a href="http://drive.google.com/uc?export=view&id=' + photoJsonData.item[i].imgs.img[j].id + '" data-lightbox="portfolio-item1-images"> <img alt = "image"  src = "http://drive.google.com/uc?export=view&id=' + photoJsonData.item[i].imgs.img[j].id + '" > </a> </div> </div> </div> </div> </div>     </section>';*/
                 //var template = ' <div class="item"> <img src="http://drive.google.com/uc?export=view&id=' + photoJsonData.item[i].imgs.img[j].id + '"> </div>'
-                var template = '<div class="item"> <a class="fancybox" rel="fancybox-thumb" href="http://drive.google.com/uc?export=view&id=' + photoJsonData.item[i].imgs.img[j].id + '"> <img  alt="" src="http://drive.google.com/uc?export=view&id=' + photoJsonData.item[i].imgs.img[j].id + '" />  </a> </div>'
+                var template = '<div class="item"> <a class="fancybox-thumb" rel="fancybox-thumb" href="http://drive.google.com/uc?export=view&id=' + photoJsonData.item[i].imgs.img[j].id + '"> <img  alt="" src="http://drive.google.com/uc?export=view&id=' + photoJsonData.item[i].imgs.img[j].id + '" />  </a> </div>'
+                    //  var template = '<a class="fancybox-thumb" rel="fancybox-thumb" href="http://farm6.staticflickr.com/5444/17679973232_568353a624_b.jpg" title="Golden Manarola (Sanjeev Deo)">	<img src="http://farm6.staticflickr.com/5444/17679973232_568353a624_m.jpg" alt="" /></a><a class="fancybox-thumb" rel="fancybox-thumb" href="http://farm8.staticflickr.com/7367/16426879675_e32ac817a8_b.jpg" title="Codirosso spazzacamino (Massimo Greco _Foligno)">	<img src="http://farm8.staticflickr.com/7367/16426879675_e32ac817a8_m.jpg" alt="" /></a><a class="fancybox-thumb" rel="fancybox-thumb" href="http://farm6.staticflickr.com/5612/15344856989_449794889d_b.jpg" title="Morning Twilight (Jose Hamra Images)">	<img src="http://farm6.staticflickr.com/5612/15344856989_449794889d_m.jpg" alt="" /></a><a class="fancybox-thumb" rel="fancybox-thumb" href="http://farm8.staticflickr.com/7289/16207238089_0124105172_b.jpg" title="(Eric Goncalves (cathing up again!))">	<img src="http://farm8.staticflickr.com/7289/16207238089_0124105172_m.jpg" alt="" /></a>'
                 $('.portfolio-nature').append(template);
             }
             //portfolio();
