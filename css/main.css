@@ -2754,6 +2754,7 @@ textarea {
     top: 10px;
     bottom: 30px;
     width: 100%;
+    height: 76%;
     left: 0;
     border: 4px #01bab0 solid;
     opacity: 0;
