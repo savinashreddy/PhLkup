@@ -1116,7 +1116,6 @@
         // ===========================================
 
         getFitPos: function(slide) {
-            debugger;
             var $what = slide.$placeholder || slide.$content;
 
             var imgWidth = slide.width;
@@ -1400,7 +1399,6 @@
         // ================================
 
         setImage: function(slide) {
-            debugger;
             var self = this;
             var srcset = slide.opts.image.srcset;
 
@@ -1517,7 +1515,6 @@
         // ======================
 
         setBigImage: function(slide) {
-            debugger;
             var self = this;
             var $img = $('<img />');
 
@@ -1630,7 +1627,6 @@
         // ==========================================
 
         setIframe: function(slide) {
-            debugger;
             var self = this,
                 opts = slide.opts.iframe,
                 $slide = slide.$slide,
@@ -1886,7 +1882,6 @@
         // =======================================
 
         afterLoad: function(slide) {
-            debugger;
             var self = this;
 
             if (self.isClosing) {

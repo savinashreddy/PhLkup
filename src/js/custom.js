@@ -436,7 +436,7 @@ function getDataFromAjax() {
     })
 }
 
-function setUpMasonry() {
+/*function setUpMasonry() {
 
     var $container = $('.container').masonry({
         itemSelector: '.item',
@@ -465,7 +465,7 @@ $.fn.masonryImagesReveal = function($items) {
     });
 
     return this;
-};
+};*/
 
 function setUpFancybox() {
     $(".fancybox").fancybox({
@@ -473,7 +473,6 @@ function setUpFancybox() {
         fitToView: true,
         type: 'iframe',
         afterLoad: function() {
-            debugger;
             /* this.content[0].contentDocument.images[0].style = ('width: auto; height: auto;');
              this.width = this.content[0].contentDocument.images[0].naturalWidth;
              this.height = this.content[0].contentDocument.images[0].naturalHeight;*/
@@ -491,7 +490,7 @@ var loadHomePhotos = function(photoJsonData) {
                 var template = '<div class="item"> <a class="fancybox" rel="fancybox-thumb" href="http://drive.google.com/uc?export=view&id=' + photoJsonData.item[i].imgs.img[j].id + '"> <img  alt="" src="http://drive.google.com/uc?export=view&id=' + photoJsonData.item[i].imgs.img[j].id + '" />  </a> </div>'
                 $('.portfolio-wedding').append(template);
             }
-            setUpMasonry();
+            //setUpMasonry();
             setUpFancybox();
             //portfolio();
         } else if (photoJsonData.item[i].id == 'fashion' && window.location.href.indexOf('glamor') >= 0) {
@@ -502,7 +501,7 @@ var loadHomePhotos = function(photoJsonData) {
                 $('.portfolio-glamour').append(template);
             }
             //portfolio();
-            setUpMasonry();
+            //setUpMasonry();
             setUpFancybox();
         } else if (photoJsonData.item[i].id == 'landscapes' && window.location.href.indexOf('landscaps') >= 0) {
             for (var j = 0; j < photoJsonData.item[i].imgs.img.length; j++) {
@@ -516,7 +515,7 @@ var loadHomePhotos = function(photoJsonData) {
                 }
             }
             //portfolio();
-            setUpMasonry();
+            //setUpMasonry();
             setUpFancybox();
         } else if (photoJsonData.item[i].id == 'home') {
             for (var j = 0; j < photoJsonData.item[i].imgs.img.length; j++) {
