@@ -1,0 +1,26 @@
+@media (max-width: 420px) {
+	.fancybox img{
+			width:280px;
+		}
+		.item{
+			padding: 10px;
+		}		
+}
+
+@media (max-width: 960px) {
+	.fancybox img{
+			width:50%;
+		}
+		.item{
+			padding: 10px;
+		}
+}
+
+@media (max-width: 1024px) {
+	.fancybox img{
+			width:90%;
+		}
+		.item{
+			padding: 10px;
+		}
+}
