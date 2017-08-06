@@ -467,7 +467,7 @@ var loadHomePhotos = function(photoJsonData) {
             setUpFancybox();
         } else if (photoJsonData.item[i].id == 'home') {
             for (var j = 0; j < photoJsonData.item[i].imgs.img.length; j++) {
-                var template = '<div class="ms-slide ms-slide1" data-delay="7"> <div class="ms-slide-pattern bg-pattern dark-screen"></div> <img src="../../images/blank.gif" data-src="http://drive.google.com/uc?export=view&id=' + photoJsonData.item[i].imgs.img[j].id + '" alt="img">  <div class="ms-thumb"><img alt="img" src="http://drive.google.com/uc?export=view&id=' + photoJsonData.item[i].imgs.img[j].id + '"></div> </div>';
+                var template = '<div class="ms-slide ms-slide1" data-delay="7"> <div class="ms-slide-pattern bg-pattern dark-screen"></div> <img src="../../images/blank.gif" data-src=' + photoJsonData.item[i].imgs.img[j].uri + ' alt="img">  <div class="ms-thumb"><img alt="img" src=' + photoJsonData.item[i].imgs.img[j].uri + '></div> </div>';
                 $('.master-slider-home').append(template);
             }
             loadMasterSlider();
