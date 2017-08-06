@@ -503,7 +503,7 @@ var loadHomePhotos = function(photoJsonData) {
                 //var template = ' <div class="item"> <img src="http://drive.google.com/uc?export=view&id=' + photoJsonData.item[i].imgs.img[j].id + '"> </div>'
                 //var template = '<div class="item"> <a class="fancybox" rel="fancybox-thumb" data-width="2048" data-height="1365" href="http://drive.google.com/uc?export=view&id=' + photoJsonData.item[i].imgs.img[j].id + '"> <img  alt="" src="http://drive.google.com/uc?export=view&id=' + photoJsonData.item[i].imgs.img[j].id + '" />  </a> </div>';
                 if (photoJsonData.item[i].imgs.img[j].uri) {
-                    var template = '<div class="item"> <a class="fancybox" rel="gallery1" href=' + photoJsonData.item[i].imgs.img[j].uri + '> <img  alt="" src=' + photoJsonData.item[i].imgs.img[j].uri + ' />  </a> </div>';
+                    var template = '<div class="item col-sm-4 col-xs-6 col-md-3 col-lg-3"> <a class="fancybox" rel="gallery1" href=' + photoJsonData.item[i].imgs.img[j].uri + '> <img  alt="" src=' + photoJsonData.item[i].imgs.img[j].uri + ' />  </a> </div>';
                     $('.portfolio-nature').append(template);
                 }
             }
