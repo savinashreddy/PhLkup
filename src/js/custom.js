@@ -451,6 +451,18 @@ var loadHomePhotos = function(photoJsonData) {
                 $('.portfolio-wedding').append(template);
             }
             setUpFancybox();
+        } else if (photoJsonData.item[i].id == 'kids' && window.location.href.indexOf('kids') >= 0) {
+            for (var j = 0; j < photoJsonData.item[i].imgs.img.length; j++) {
+                var template = '<div class="item col-sm-4 col-xs-6 col-md-3 col-lg-3"> <a class="fancybox" rel="gallery1" href=' + photoJsonData.item[i].imgs.img[j].uri + '> <img  alt="" src=' + photoJsonData.item[i].imgs.img[j].uri + ' />  </a> </div>';
+                $('.portfolio-glamour').append(template);
+            }
+            setUpFancybox();
+        } else if (photoJsonData.item[i].id == 'events' && window.location.href.indexOf('events') >= 0) {
+            for (var j = 0; j < photoJsonData.item[i].imgs.img.length; j++) {
+                var template = '<div class="item col-sm-4 col-xs-6 col-md-3 col-lg-3"> <a class="fancybox" rel="gallery1" href=' + photoJsonData.item[i].imgs.img[j].uri + '> <img  alt="" src=' + photoJsonData.item[i].imgs.img[j].uri + ' />  </a> </div>';
+                $('.portfolio-glamour').append(template);
+            }
+            setUpFancybox();
         } else if (photoJsonData.item[i].id == 'fashion' && window.location.href.indexOf('glamor') >= 0) {
             for (var j = 0; j < photoJsonData.item[i].imgs.img.length; j++) {
                 var template = '<div class="item col-sm-4 col-xs-6 col-md-3 col-lg-3"> <a class="fancybox" rel="gallery1" href=' + photoJsonData.item[i].imgs.img[j].uri + '> <img  alt="" src=' + photoJsonData.item[i].imgs.img[j].uri + ' />  </a> </div>';
@@ -465,7 +477,7 @@ var loadHomePhotos = function(photoJsonData) {
                 }
             }
             setUpFancybox();
-        } else if (photoJsonData.item[i].id == 'home') {
+        } else if (photoJsonData.item[i].id == 'home' && window.location.pathname == '/') {
             for (var j = 0; j < photoJsonData.item[i].imgs.img.length; j++) {
                 var template = '<div class="ms-slide ms-slide1" data-delay="7"> <div class="ms-slide-pattern bg-pattern dark-screen"></div> <img src="../../images/blank.gif" data-src=' + photoJsonData.item[i].imgs.img[j].uri + ' alt="img">  <div class="ms-thumb"><img alt="img" src=' + photoJsonData.item[i].imgs.img[j].uri + '></div> </div>';
                 $('.master-slider-home').append(template);
